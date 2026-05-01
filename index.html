@@ -1,0 +1,1312 @@
+#Project Jeff Fischer
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&S SAT — Expert SAT Tutoring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { zoom: 1.25; }
+  :root {
+    --navy: #0b1c2e;
+    --navy-mid: #122540;
+    --navy-light: #1a3252;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f1ea;
+    --cream-dark: #ede8df;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 19px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    padding: 0 60px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 8px 20px;
+    border-radius: 3px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 52px 60px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.05);
+  }
+
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 64px);
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 28px;
+    border-radius: 3px;
+    font-size: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    color: rgba(255,255,255,0.45);
+    font-size: 20px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.4); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--cream-dark);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 20px 60px;
+  }
+
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .stat { text-align: left; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(0,0,0,0.12);
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 44px 60px; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-body {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .about-body p + p { margin-top: 16px; }
+
+  .about-highlight {
+    background: var(--navy);
+    border-radius: 6px;
+    padding: 32px;
+    color: white;
+  }
+
+  .about-highlight-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .highlight-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .highlight-item:last-child { border-bottom: none; }
+
+  .highlight-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── PROGRAMS ── */
+  .programs { background: var(--cream); }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .program-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 6px;
+    padding: 36px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .program-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+
+  .program-card.featured {
+    background: var(--navy);
+    border-color: transparent;
+  }
+
+  .program-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .program-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .program-card.featured .program-title { color: var(--white); }
+
+  .program-desc {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .program-card.featured .program-desc { color: rgba(255,255,255,0.45); }
+
+  .program-features {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .program-features li {
+    font-size: 14px;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 300;
+  }
+
+  .program-card.featured .program-features li {
+    color: rgba(255,255,255,0.55);
+    border-bottom-color: rgba(255,255,255,0.06);
+  }
+
+  .program-features li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .program-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .program-card.featured .program-price { color: var(--white); }
+
+  .program-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  .program-card.featured .program-price span { color: rgba(255,255,255,0.35); }
+
+  /* ── CURRICULUM ── */
+  .curriculum { background: var(--white); }
+
+  .curriculum-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .tab-btn {
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .tab-btn.active {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+    font-weight: 500;
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .week-table { width: 100%; border-collapse: collapse; }
+
+  .week-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .week-table td {
+    padding: 13px;
+    font-size: 15px;
+    font-weight: 300;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .week-table tr:last-child td { border-bottom: none; }
+
+  .week-table tr:nth-child(even) td { background: var(--cream); }
+
+  .week-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .week-focus {
+    font-weight: 500 !important;
+    color: var(--navy) !important;
+    white-space: nowrap;
+  }
+
+  .week-desc { color: var(--muted); }
+
+  /* ── TUTORS ── */
+  .tutors { background: var(--cream-dark); }
+
+  .tutors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .tutor-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 6px;
+    padding: 36px;
+  }
+
+  .tutor-avatar {
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  display: block;
+  border: 2px solid var(--gold);
+  background: var(--navy);
+  }
+  .tutor-avatar-beni { object-position: center 110%; }
+  .tutor-avatar-tate { object-position: center 0%; }
+
+
+  .tutor-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .tutor-score {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .tutor-bio {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .tutor-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--navy);
+    background: var(--cream-dark);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-right: 6px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── PRICING ESTIMATOR ── */
+  .pricing { background: var(--white); }
+
+  .estimator { max-width: 580px; }
+
+  .est-step { margin-bottom: 1.75rem; }
+
+  .est-step-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .toggle-row { display: flex; gap: 10px; }
+
+  .tog {
+    flex: 1;
+    padding: 11px 0;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    background: var(--cream-dark);
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tog.on {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .pkg-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .pkg {
+    padding: 16px 14px;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 6px;
+    background: var(--cream);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .pkg:hover { border-color: rgba(11,28,46,0.25); }
+
+  .pkg.on {
+    border: 2px solid var(--navy);
+    background: var(--cream);
+  }
+
+  .pkg-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .pkg-sub {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+
+  .pkg-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(201,168,76,0.15);
+    color: #8a6d20;
+  }
+
+  .est-result {
+    background: var(--navy);
+    border-radius: 6px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .res-lbl {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 6px;
+  }
+
+  .res-total {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  .res-original {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: line-through;
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  .res-detail {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
+  .res-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+    max-width: 120px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--navy); padding: 44px 60px; }
+
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact .section-title { color: var(--white); }
+  .contact .section-sub { color: rgba(255,255,255,0.4); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .form-input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--white);
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+    font-weight: 300;
+  }
+
+  .form-input:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.09);
+  }
+
+  .form-input::placeholder { color: rgba(255,255,255,0.2); }
+
+  textarea.form-input { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+    letter-spacing: 0.02em;
+  }
+
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #07111e;
+    padding: 28px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-logo span { color: var(--gold); opacity: 0.6; }
+
+  .footer-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    font-weight: 300;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-label { animation: fadeUp 0.5s ease both; }
+  .hero-title { animation: fadeUp 0.5s ease 0.1s both; }
+  .hero-sub { animation: fadeUp 0.5s ease 0.2s both; }
+  .hero-actions { animation: fadeUp 0.5s ease 0.3s both; }
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── MOBILE 768px ── */
+  @media (max-width: 768px) {
+    html { zoom: 1; }
+
+    nav { padding: 0 20px; position: relative; }
+
+    .nav-hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--navy);
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 12px 0;
+      z-index: 99;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links li { width: 100%; }
+
+    .nav-links a {
+      display: block;
+      padding: 12px 24px;
+      font-size: 14px;
+    }
+
+    .nav-cta {
+      margin: 8px 24px 4px;
+      text-align: center;
+      border-radius: 3px;
+      display: block;
+      padding: 10px 20px !important;
+    }
+
+    .hero { padding: 40px 20px 36px; }
+    .hero-title { font-size: clamp(32px, 8vw, 48px); }
+
+    .stats-bar { padding: 16px 20px; overflow-x: auto; }
+    .stats-inner { gap: 28px; min-width: 480px; }
+
+    section { padding: 36px 20px; }
+
+    .about-grid,
+    .programs-grid,
+    .tutors-grid { grid-template-columns: 1fr; gap: 20px; }
+
+    .pkg-row { grid-template-columns: 1fr; }
+
+    .contact { padding: 36px 20px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+
+    .form-row { grid-template-columns: 1fr; }
+
+    footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  /* ── MOBILE 480px ── */
+  @media (max-width: 480px) {
+    .hero-title { font-size: clamp(28px, 9vw, 36px); }
+    .section-title { font-size: clamp(22px, 7vw, 30px); }
+    .stats-inner { gap: 20px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">A&S <span>SAT</span></div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#tutors">Tutors</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Book now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">SAT Tutoring · Phoenix, AZ · Summer 2026</div>
+    <h1 class="hero-title">Study smarter.<br><em>Score higher.</em></h1>
+    <p class="hero-sub">One-on-one and group SAT prep from tutors who recently scored in the 98th percentile — and know exactly what the current digital test demands.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a free diagnostic</a>
+      <a href="#programs" class="btn-primary">View programs</a>
+      <a href="#pricing" class="btn-primary">View pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-number">1550</div>
+      <div class="stat-label">Top tutor SAT score</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-number">Perfect</div>
+      <div class="stat-label">Top Tutor PSAT score</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-number">98th %ile</div>
+      <div class="stat-label">Both tutors</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-number">2026</div>
+      <div class="stat-label">Test taken this year</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-number">Digital SAT</div>
+      <div class="stat-label">Current format expertise</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About</div>
+        <h2 class="section-title">Tutoring by students who just took the test</h2>
+        <div class="about-body">
+          <p>A&S SAT was started by two recent high school graduates who recently scored in the 98th percentile on the digital SAT. We know the current test inside and out.</p>
+          <p>Our approach is diagnostic-driven. Every student starts with a full diagnostic session so we know exactly where their points are being lost. Sessions are then built around those weak areas, not a generic curriculum that wastes time on things they already know.</p>
+          <p>We keep classes small and private lessons personalized. Sessions are continually tailored to the students need by hand grading student homework and finding weak points.</p>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <div class="about-highlight-title">Why A&S SAT</div>
+        <div class="highlight-item"><div class="highlight-dot"></div>Both tutors scored 1510–1550 on the current digital SAT format</div>
+        <div class="highlight-item"><div class="highlight-dot"></div>Perfect PSAT score — demonstrates mastery, not just familiarity</div>
+        <div class="highlight-item"><div class="highlight-dot"></div>Significantly cheaper than Kaplan or Princeton Review ($150–200/hr)</div>
+        <div class="highlight-item"><div class="highlight-dot"></div>Max 15 students per group class — never a 40-person lecture</div>
+        <div class="highlight-item"><div class="highlight-dot"></div>Fully diagnostic-driven — sessions target students' actual weak areas</div>
+        <div class="highlight-item"><div class="highlight-dot"></div>Available remotely over Google Meet and in person*</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORS -->
+<section class="tutors" id="tutors">
+  <div class="section-inner">
+    <div class="section-label">Tutors</div>
+    <h2 class="section-title">Who you'll work with</h2>
+    <p class="section-sub">Two tutors. One focused on Math, one on Reading & Writing. Both scored in the 98th percentile on the current digital SAT.</p>
+    <div class="tutors-grid">
+      <div class="tutor-card">
+        <img src="Images/BeniPicture.png" alt="Beni Sarreal" class="tutor-avatar tutor-avatar-beni">>
+        <div class="tutor-name">Beni Sarreal</div>
+        <div class="tutor-score">SAT 1510 · Perfect PSAT · National Merit Finalist</div>
+        <div class="tutor-score">Brophy 26' · University of Chicago 30'</div>
+        <span class="tutor-tag">Reading & Writing Lead</span>
+        <span class="tutor-tag">Phoenix, AZ</span>
+      </div>
+      <div class="tutor-card">
+        <img src="Images/TatePicture.jpg" alt="Tate Armstrong" class="tutor-avatar tutor-avatar-tate">>
+        <div class="tutor-name">Tate Armstrong</div>
+        <div class="tutor-score">SAT 1550</div>
+        <div class="tutor-score">Brophy 26' · University of Notre Dame 30'</div>
+        <span class="tutor-tag">Math Lead</span>
+        <span class="tutor-tag">Phoenix, AZ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="section-inner">
+    <div class="section-label">Programs</div>
+    <h2 class="section-title">Choose your format</h2>
+    <p class="section-sub">Private lessons for focused one-on-one work. Group classes for structured prep at an accessible price.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-title">Private Lessons</div>
+        <p class="program-desc">Best for students who want focused, one-on-one attention on their specific weak areas and are serious about hitting a target score.</p>
+        <ul class="program-features">
+          <li>1-on-1 with a dedicated tutor</li>
+          <li>60 or 90 minute sessions</li>
+          <li>Personalized weak-area curriculum</li>
+          <li>Homework assigned between sessions</li>
+          <li>Progress report every 4 sessions</li>
+          <li>Available as 4-week or 8-week plan</li>
+        </ul>
+        <div class="program-price">$60 <span>/ hr*</span></div>
+      </div>
+      <div class="program-card featured">
+        <div class="program-badge">Most Popular</div>
+        <div class="program-title">Group Classes</div>
+        <p class="program-desc">Best for students who want structured and holistic SAT prep at an affordable price and who learn well in a collaborative environment.</p>
+        <ul class="program-features">
+          <li>Both tutors present each session</li>
+          <li>60 minute structured sessions</li>
+          <li>Personalized homework</li>
+          <li>Timed practice + group review</li>
+          <li>Available as 4-week or 8-week plan</li>
+          <li>Diagnostic in Week 1</li>
+        </ul>
+        <div class="program-price">$32 <span>/ hr per student*</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum" id="curriculum">
+  <div class="section-inner">
+    <div class="section-label">Curriculum</div>
+    <h2 class="section-title">What each week looks like</h2>
+    <p class="section-sub">Every curriculum starts with a diagnostic. Weak areas identified in session one determine where the rest of the time goes.</p>
+
+    <div class="curriculum-tabs">
+      <button class="tab-btn active" onclick="switchTab(event, 'eight')">8-Week Private</button>
+      <button class="tab-btn" onclick="switchTab(event, 'four')">4-Week Private</button>
+      <button class="tab-btn" onclick="switchTab(event, 'group')">8-Week Group</button>
+    </div>
+
+    <div class="tab-content active" id="tab-eight">
+      <table class="week-table">
+        <thead>
+          <tr>
+            <th style="width:80px;">Week</th>
+            <th style="width:180px;">Focus</th>
+            <th>Session Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="week-num">Week 1</td><td class="week-focus">Diagnostic</td><td class="week-desc">Full timed diagnostic. Score breakdown by section and sub-skill. Identify top 3 weak areas. Set a realistic target score.</td></tr>
+          <tr><td class="week-num">Week 2</td><td class="week-focus">Weak area #1</td><td class="week-desc">Deep dive into the primary weak area. Concept teaching, worked examples, 20-min timed practice set, and review.</td></tr>
+          <tr><td class="week-num">Week 3</td><td class="week-focus">Weak area #2</td><td class="week-desc">Same format — concept teaching, worked examples, timed practice. Compare to Week 2 performance and track improvement.</td></tr>
+          <tr><td class="week-num">Week 4</td><td class="week-focus">Weak area #3</td><td class="week-desc">Address the third weak area. Begin connecting all three — students often make the same conceptual error across sections.</td></tr>
+          <tr><td class="week-num">Week 5</td><td class="week-focus">Cross-section strategy</td><td class="week-desc">Pacing, guessing rules, question-order strategy, elimination techniques. Applicable across both Math and Reading & Writing.</td></tr>
+          <tr><td class="week-num">Week 6</td><td class="week-focus">Targeted practice</td><td class="week-desc">Mixed practice set from all three weak areas. Identify what has improved and what still needs work going into the final stretch.</td></tr>
+          <tr><td class="week-num">Week 7</td><td class="week-focus">Test simulation</td><td class="week-desc">35 minutes of timed full-section practice (Math or R&W, whichever is weaker), followed by 25 minutes of immediate error review.</td></tr>
+          <tr><td class="week-num">Week 8</td><td class="week-focus">Final review</td><td class="week-desc">Review remaining error patterns by category. Final reinforcement of weakest area. Mental prep and strategy for test day.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-content" id="tab-four">
+      <table class="week-table">
+        <thead>
+          <tr>
+            <th style="width:80px;">Week</th>
+            <th style="width:180px;">Focus</th>
+            <th>Session Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="week-num">Week 1</td><td class="week-focus">Diagnostic</td><td class="week-desc">Timed diagnostic — one full section (Math or R&W based on student priority). Score breakdown, identify top 2 weak areas, set target.</td></tr>
+          <tr><td class="week-num">Week 2</td><td class="week-focus">Weak areas</td><td class="week-desc">Address both weak areas in one session — 25 minutes each. Focus on highest-impact concepts first. Homework assigned.</td></tr>
+          <tr><td class="week-num">Week 3</td><td class="week-focus">Strategy + practice</td><td class="week-desc">Pacing, elimination, and guessing rules. Mixed timed practice from both weak areas. Review homework from Week 2.</td></tr>
+          <tr><td class="week-num">Week 4</td><td class="week-focus">Final push</td><td class="week-desc">Timed section practice followed by error review by category. Final reinforcement of weakest remaining area.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-content" id="tab-group">
+      <table class="week-table">
+        <thead>
+          <tr>
+            <th style="width:80px;">Week</th>
+            <th style="width:180px;">Focus</th>
+            <th>Session Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="week-num">Week 1</td><td class="week-focus">Diagnostic</td><td class="week-desc">Full diagnostic test. Group score breakdown. Identify common weak areas across students that will shape the curriculum.</td></tr>
+          <tr><td class="week-num">Week 2–3</td><td class="week-focus">Reading & Writing</td><td class="week-desc">Evidence-based questions, grammar rules, vocabulary in context, and passage structure. Timed practice each session.</td></tr>
+          <tr><td class="week-num">Week 4–5</td><td class="week-focus">Math</td><td class="week-desc">Algebra, advanced math, data analysis, and problem-solving strategy. Timed practice each session with group review.</td></tr>
+          <tr><td class="week-num">Week 6</td><td class="week-focus">Test strategy</td><td class="week-desc">Pacing, guessing rules, question order, and elimination techniques applicable across both sections.</td></tr>
+          <tr><td class="week-num">Week 7</td><td class="week-focus">Test simulation</td><td class="week-desc">Full section under real timed conditions, followed by group error review broken down by question type.</td></tr>
+          <tr><td class="week-num">Week 8</td><td class="week-focus">Final review</td><td class="week-desc">Targeted reinforcement of remaining weak areas. Test-day strategy and mental preparation.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Estimate your cost</h2>
+    <p class="section-sub">No hidden fees. First diagnostic session is always free.</p>
+
+    <div class="estimator">
+      <div class="est-step">
+        <div class="est-step-label">Session type</div>
+        <div class="toggle-row">
+          <button class="tog on" id="btn-private">Private (1-on-1)</button>
+          <button class="tog" id="btn-group">Group</button>
+          <button class="tog" id="btn-combo">Private + Group</button>
+        </div>
+      </div>
+
+      <div class="est-step">
+        <div class="est-step-label">Package</div>
+        <div class="pkg-row">
+          <button class="pkg" id="pkg-payg">
+            <span class="pkg-name">Pay as you go</span>
+            <span class="pkg-sub">1 session</span>
+          </button>
+          <button class="pkg" id="pkg-4w">
+            <span class="pkg-name">4-week</span>
+            <span class="pkg-badge">10% off</span>
+          </button>
+          <button class="pkg on" id="pkg-8w">
+            <span class="pkg-name">8-week</span>
+            <span class="pkg-badge">20% off</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="est-result">
+        <div>
+          <div class="res-lbl">Estimated total</div>
+          <div class="res-total" id="res-total">$480</div>
+          <div class="res-original" id="res-original">$600 without discount</div>
+          <div class="res-detail" id="res-detail">8 private sessions · $75 / hr</div>
+        </div>
+        <div class="res-note">First diagnostic session always free</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Book your free diagnostic</h2>
+      <p class="section-sub">The first session is always free. We'll identify exactly where your points are being lost and recommend the right program.</p>
+    </div>
+    <form class="contact-form" action="https://formspree.io/f/xojrqwbl" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Student name</label>
+          <input type="text" class="form-input" name="student_name" placeholder="First Last">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Parent name</label>
+          <input type="text" class="form-input" name="parent_name" placeholder="First Last">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" name="email" placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Current SAT score (if known)</label>
+        <input type="text" class="form-input" name="current_score" placeholder="e.g. 1180, or 'haven't taken it yet'">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Program interest</label>
+        <select class="form-input" name="program">
+          <option value="" disabled selected>Select a program</option>
+          <option>4-Week Private</option>
+          <option>8-Week Private</option>
+          <option>Group Class</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Anything else?</label>
+        <textarea class="form-input" name="message" placeholder="Test date, goals, availability, questions..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">A&S <span>SAT</span></div>
+  <div class="footer-text">Phoenix, AZ · Summer 2026 · assatprep@gmail.com</div>
+</footer>
+
+<script>
+  function switchTab(event, tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Hamburger menu
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Pricing estimator
+// Pricing estimator
+const estDisc = { payg: 0, '4w': 0.10, '8w': 0.20 };
+const estSessions = {
+  private: { payg: 1, '4w': 4,  '8w': 8  },
+  group:   { payg: 1, '4w': 8,  '8w': 16 },
+  combo:   { payg: 1, '4w': 4,  '8w': 8  }
+};
+let estType = 'private', estPkgKey = '8w';
+
+function estFmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function estUpdate() {
+  const disc = estDisc[estPkgKey];
+  let full, detail;
+  if (estType === 'combo') {
+    const priv = estSessions.private[estPkgKey];
+    const grp  = estSessions.group[estPkgKey];
+    full = (priv * 75) + (grp * 40);
+    detail = priv + ' private + ' + grp + ' group sessions';
+  } else {
+    const sessions = estSessions[estType][estPkgKey];
+    const rate = estType === 'private' ? 75 : 40;
+    full = sessions * rate;
+    detail = sessions + (sessions === 1 ? ' session' : ' sessions') + ' · $' + rate + ' / hr';
+  }
+  const total = full * (1 - disc);
+  document.getElementById('res-total').textContent = estFmt(total);
+  const origEl = document.getElementById('res-original');
+  if (disc > 0) {
+    origEl.textContent = estFmt(full) + ' without discount';
+
+    origEl.style.display = 'block';
+  } else {
+    origEl.style.display = 'none';
+  }
+  document.getElementById('res-detail').textContent = detail;
+}
+
+function estSetType(t) {
+  estType = t;
+  document.getElementById('btn-private').classList.toggle('on', t === 'private');
+  document.getElementById('btn-group').classList.toggle('on', t === 'group');
+  document.getElementById('btn-combo').classList.toggle('on', t === 'combo');
+  estUpdate();
+}
+
+function estSetPkg(p) {
+  estPkgKey = p;
+  ['payg', '4w', '8w'].forEach(k => document.getElementById('pkg-' + k).classList.toggle('on', k === p));
+  estUpdate();
+}
+
+document.getElementById('btn-private').addEventListener('click', () => estSetType('private'));
+document.getElementById('btn-group').addEventListener('click', () => estSetType('group'));
+document.getElementById('btn-combo').addEventListener('click', () => estSetType('combo'));
+document.getElementById('pkg-payg').addEventListener('click', () => estSetPkg('payg'));
+document.getElementById('pkg-4w').addEventListener('click', () => estSetPkg('4w'));
+document.getElementById('pkg-8w').addEventListener('click', () => estSetPkg('8w'));
+</script>
+
+</body>
+</html>
