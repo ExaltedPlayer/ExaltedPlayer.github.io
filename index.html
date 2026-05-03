@@ -485,6 +485,46 @@
  
   .week-desc { color: var(--muted); }
  
+  .week-subject { color: var(--muted); }
+  .week-subject strong {
+    display: block;
+    color: var(--navy);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+ 
+  .private-plan {
+    max-width: 760px;
+    padding: 16px 4px 8px;
+  }
+  .private-plan p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+    margin: 0 0 22px 0;
+  }
+  .private-plan p:last-child { margin-bottom: 0; }
+ 
+  @media (max-width: 700px) {
+    .week-table thead { display: none; }
+    .week-table tr {
+      display: block;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .week-table tr:nth-child(even) td { background: transparent; }
+    .week-table td {
+      display: block;
+      padding: 6px 0;
+      border-bottom: none;
+    }
+    .week-table .week-num {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+  }
+ 
   /* ── TUTORS ── */
   .tutors { background: var(--cream-dark); }
  
@@ -739,7 +779,66 @@
     background: rgba(255,255,255,0.09);
   }
  
-  .form-input::placeholder { color: rgba(255,255,255,0.2); }
+  .form-input::placeholder { color: rgba(255,255,255,0.4); }
+ 
+  .contact-expect {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .contact-expect-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .contact-expect ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step;
+  }
+  .contact-expect li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 38px;
+    margin-bottom: 16px;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .contact-expect li:last-child { margin-bottom: 0; }
+  .contact-expect li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .form-submit-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .form-submit-note {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+  }
  
   textarea.form-input { resize: vertical; min-height: 100px; }
  
@@ -1095,71 +1194,72 @@
 <section class="curriculum" id="curriculum">
   <div class="section-inner">
     <div class="section-label">Curriculum</div>
-    <h2 class="section-title">What each week looks like</h2>
+    <h2 class="section-title">How tutoring is structured</h2>
     <p class="section-sub">Every curriculum starts with a diagnostic. Weak areas identified in the diagnostic determine what areas are focused on.</p>
  
     <div class="curriculum-tabs">
-      <button class="tab-btn" onclick="switchTab(event, 'group')">8-Week Group</button>
-      <button class="tab-btn active" onclick="switchTab(event, 'eight')">8-Week Private</button>
-      <button class="tab-btn" onclick="switchTab(event, 'four')">4-Week Private</button>
+      <button class="tab-btn active" onclick="switchTab(event, 'group')">8-Week Group</button>
+      <button class="tab-btn" onclick="switchTab(event, 'private')">Private</button>
     </div>
  
-    <div class="tab-content active" id="tab-eight">
+    <div class="tab-content" id="tab-private">
+      <div class="private-plan">
+        <p>Private tutoring begins with a diagnostic to identify each student's strengths and weaknesses. In the first session, the tutor reviews every missed question — explaining both how to solve it and why the student missed it — and categorizes each mistake as a content gap, timing issue, careless error, or strategy problem.</p>
+        <p>From there, the tutor builds a personalized lesson plan focused on the student's highest-priority areas, whether that's Algebra, Advanced Math, Grammar, Reading Comprehension, or pacing. Targeted homework is assigned after each session and reviewed at the start of the next before moving on.</p>
+        <p>As the test date approaches, sessions shift toward mixed practice, timed sections, Desmos strategies, and full practice test review. The structure stays flexible — focused at every stage on the areas that will improve the score fastest.</p>
+      </div>
+    </div>
+ 
+    <div class="tab-content active" id="tab-group">
       <table class="week-table">
         <thead>
           <tr>
             <th style="width:80px;">Week</th>
-            <th style="width:180px;">Focus</th>
-            <th>Session Content</th>
+            <th style="width:42%;">Math</th>
+            <th>English</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td class="week-num">Week 1</td><td class="week-focus">Diagnostic</td><td class="week-desc">Full timed diagnostic. Score breakdown by section and sub-skill. Identify top 3 weak areas. Set a realistic target score.</td></tr>
-          <tr><td class="week-num">Week 2</td><td class="week-focus">Weak area #1</td><td class="week-desc">Deep dive into the primary weak area. Concept teaching, worked examples, 20-min timed practice set, and review.</td></tr>
-          <tr><td class="week-num">Week 3</td><td class="week-focus">Weak area #2</td><td class="week-desc">Same format — concept teaching, worked examples, timed practice. Compare to Week 2 performance and track improvement.</td></tr>
-          <tr><td class="week-num">Week 4</td><td class="week-focus">Weak area #3</td><td class="week-desc">Address the third weak area. Begin connecting all three — students often make the same conceptual error across sections.</td></tr>
-          <tr><td class="week-num">Week 5</td><td class="week-focus">Cross-section strategy</td><td class="week-desc">Pacing, guessing rules, question-order strategy, elimination techniques. Applicable across both Math and Reading & Writing.</td></tr>
-          <tr><td class="week-num">Week 6</td><td class="week-focus">Targeted practice</td><td class="week-desc">Mixed practice set from all three weak areas. Identify what has improved and what still needs work going into the final stretch.</td></tr>
-          <tr><td class="week-num">Week 7</td><td class="week-focus">Test simulation</td><td class="week-desc">35 minutes of timed full-section practice (Math or R&W, whichever is weaker), followed by 25 minutes of immediate error review.</td></tr>
-          <tr><td class="week-num">Week 8</td><td class="week-focus">Final review</td><td class="week-desc">Review remaining error patterns by category. Final reinforcement of weakest area. Mental prep and strategy for test day.</td></tr>
-        </tbody>
-      </table>
-    </div>
- 
-    <div class="tab-content" id="tab-four">
-      <table class="week-table">
-        <thead>
           <tr>
-            <th style="width:80px;">Week</th>
-            <th style="width:180px;">Focus</th>
-            <th>Session Content</th>
+            <td class="week-num">Week 1</td>
+            <td class="week-subject"><strong>Intro to A&amp;S SAT and SAT Math:</strong> homework setup, test format, timing, question trends, how to use Desmos, how to review mistakes</td>
+            <td class="week-subject"><strong>Intro to SAT English:</strong> test format, timing, common question types, how to eliminate answers</td>
           </tr>
-        </thead>
-        <tbody>
-          <tr><td class="week-num">Week 1</td><td class="week-focus">Diagnostic</td><td class="week-desc">Timed diagnostic — one full section (Math or R&W based on student priority). Score breakdown, identify top 2 weak areas, set target.</td></tr>
-          <tr><td class="week-num">Week 2</td><td class="week-focus">Weak areas</td><td class="week-desc">Address both weak areas in one session — 25 minutes each. Focus on highest-impact concepts first. Homework assigned.</td></tr>
-          <tr><td class="week-num">Week 3</td><td class="week-focus">Strategy + practice</td><td class="week-desc">Pacing, elimination, and guessing rules. Mixed timed practice from both weak areas. Review homework from Week 2.</td></tr>
-          <tr><td class="week-num">Week 4</td><td class="week-focus">Final push</td><td class="week-desc">Timed section practice followed by error review by category. Final reinforcement of weakest remaining area.</td></tr>
-        </tbody>
-      </table>
-    </div>
- 
-    <div class="tab-content" id="tab-group">
-      <table class="week-table">
-        <thead>
           <tr>
-            <th style="width:80px;">Week</th>
-            <th style="width:180px;">Focus</th>
-            <th>Session Content</th>
+            <td class="week-num">Week 2</td>
+            <td class="week-subject"><strong>Algebra 1:</strong> linear equations in one variable, linear functions</td>
+            <td class="week-subject"><strong>Grammar 1:</strong> complete sentences, fragments, run-ons, comma splices, semicolons, colons</td>
           </tr>
-        </thead>
-        <tbody>
-          <tr><td class="week-num">Week 1</td><td class="week-focus">Diagnostic</td><td class="week-desc">Full diagnostic test. Group score breakdown. Identify common weak areas across students that will shape the curriculum.</td></tr>
-          <tr><td class="week-num">Week 2–3</td><td class="week-focus">Reading & Writing</td><td class="week-desc">Evidence-based questions, grammar rules, vocabulary in context, and passage structure. Timed practice each session.</td></tr>
-          <tr><td class="week-num">Week 4–5</td><td class="week-focus">Math</td><td class="week-desc">Algebra, advanced math, data analysis, and problem-solving strategy. Timed practice each session with group review.</td></tr>
-          <tr><td class="week-num">Week 6</td><td class="week-focus">Test strategy</td><td class="week-desc">Pacing, guessing rules, question order, and elimination techniques applicable across both sections.</td></tr>
-          <tr><td class="week-num">Week 7</td><td class="week-focus">Test simulation</td><td class="week-desc">Full section under real timed conditions, followed by group error review broken down by question type.</td></tr>
-          <tr><td class="week-num">Week 8</td><td class="week-focus">Final review</td><td class="week-desc">Targeted reinforcement of remaining weak areas. Test-day strategy and mental preparation.</td></tr>
+          <tr>
+            <td class="week-num">Week 3</td>
+            <td class="week-subject"><strong>Algebra 2:</strong> linear equations in two variables, systems of two linear equations in two variables, linear inequalities in one or two variables</td>
+            <td class="week-subject"><strong>Grammar 2:</strong> commas, apostrophes, pronouns, subject-verb agreement, verb tense</td>
+          </tr>
+          <tr>
+            <td class="week-num">Week 4</td>
+            <td class="week-subject"><strong>Advanced Math 1:</strong> nonlinear functions, nonlinear equations in one variable</td>
+            <td class="week-subject"><strong>Transitions and Bullet Questions:</strong> transition words, logical relationships, notes questions, &ldquo;use the notes to&hellip;&rdquo; questions</td>
+          </tr>
+          <tr>
+            <td class="week-num">Week 5</td>
+            <td class="week-subject"><strong>Advanced Math 2:</strong> systems of equations in two variables, equivalent expressions</td>
+            <td class="week-subject"><strong>Reading Comprehension 1:</strong> main idea, central claim, evidence, inference</td>
+          </tr>
+          <tr>
+            <td class="week-num">Week 6</td>
+            <td class="week-subject"><strong>Problem Solving and Data Analysis:</strong> percentages, ratios, rates, probability, mean/median, graphs, tables</td>
+            <td class="week-subject"><strong>Reading Comprehension 2:</strong> charts/graphs, paired passages, command of evidence</td>
+          </tr>
+          <tr>
+            <td class="week-num">Week 7</td>
+            <td class="week-subject"><strong>Geometry and Trigonometry:</strong> triangles, circles, area, volume, coordinate geometry, basic trig</td>
+            <td class="week-subject"><strong>Reading Comprehension 3:</strong> vocab in context, author purpose, structure, hard passages</td>
+          </tr>
+          <tr>
+            <td class="week-num">Week 8</td>
+            <td class="week-subject"><strong>Desmos Tips, Mixed Review, and Final Strategy:</strong> fastest methods, guessing strategy, formula review, full mixed practice</td>
+            <td class="week-subject"><strong>English Wrap-Up:</strong> grammar review, transitions review, reading strategy, common traps, final mixed practice</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1172,7 +1272,17 @@
     <div>
       <div class="section-label">Contact</div>
       <h2 class="section-title">Book your free diagnostic</h2>
-      <p class="section-sub">The first session is always free. We'll identify exactly where your points are being lost and recommend the right program.</p>
+      <p class="section-sub">The first session is always free. We'll identify exactly where your points are being lost and recommend the right program — or tell you honestly if you don't need tutoring at all.</p>
+ 
+      <div class="contact-expect">
+        <div class="contact-expect-label">What happens next</div>
+        <ol>
+          <li>We reply within one business day to schedule your diagnostic.</li>
+          <li>You take a full timed diagnostic — no cost, no commitment.</li>
+          <li>You get a detailed score breakdown by section and sub-skill.</li>
+          <li>We recommend the program that fits, or none at all if it isn't worth it.</li>
+        </ol>
+      </div>
     </div>
     <form class="contact-form" action="https://formspree.io/f/xojrqwbl" method="POST">
       <div class="form-row">
@@ -1185,29 +1295,44 @@
           <input type="text" class="form-input" name="parent_name" placeholder="First Last">
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-input" name="email" placeholder="email@example.com">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" name="email" placeholder="email@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone (optional)</label>
+          <input type="tel" class="form-input" name="phone" placeholder="If you'd prefer a quick call">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Current SAT score</label>
+          <input type="text" class="form-input" name="current_score" placeholder="e.g. 1180, or 'haven't taken it'">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Target score</label>
+          <input type="text" class="form-input" name="target_score" placeholder="e.g. 1450">
+        </div>
       </div>
       <div class="form-group">
-        <label class="form-label">Current SAT score (if known)</label>
-        <input type="text" class="form-input" name="current_score" placeholder="e.g. 1180, or 'haven't taken it yet'">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Program interest</label>
-        <select class="form-input" name="program">
-          <option value="" disabled selected>Select a program</option>
-          <option>4-Week Private</option>
-          <option>8-Week Private</option>
-          <option>Group Class</option>
-          <option>Not sure yet</option>
+        <label class="form-label">When is the test?</label>
+        <select class="form-input" name="test_timeline">
+          <option value="" disabled selected>Select a timeline</option>
+          <option>Within 1 month</option>
+          <option>1–3 months</option>
+          <option>3+ months</option>
+          <option>Not scheduled yet</option>
         </select>
       </div>
       <div class="form-group">
         <label class="form-label">Anything else?</label>
-        <textarea class="form-input" name="message" placeholder="Test date, goals, availability, questions..."></textarea>
+        <textarea class="form-input" name="message" placeholder="Goals, availability, questions..."></textarea>
       </div>
-      <button type="submit" class="form-submit">Send message</button>
+      <div class="form-submit-row">
+        <button type="submit" class="form-submit">Book my diagnostic</button>
+        <span class="form-submit-note">We'll respond within one business day.</span>
+      </div>
     </form>
   </div>
 </section>
@@ -1307,6 +1432,6 @@ document.getElementById('pkg-8w').addEventListener('click', () => estSetPkg('8w'
  
 </body>
 </html>
-
+ 
 </body>
 </html>
