@@ -1044,6 +1044,53 @@
   </div>
 </section>
  
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Estimate your cost</h2>
+    <p class="section-sub">No hidden fees. First diagnostic session is always free.</p>
+ 
+    <div class="estimator">
+      <div class="est-step">
+        <div class="est-step-label">Session type</div>
+        <div class="toggle-row">
+          <button class="tog on" id="btn-private">Private (1-on-1)</button>
+          <button class="tog" id="btn-group">Group</button>
+          <button class="tog" id="btn-combo">Private + Group</button>
+        </div>
+      </div>
+ 
+      <div class="est-step">
+        <div class="est-step-label">Package</div>
+        <div class="pkg-row">
+          <button class="pkg" id="pkg-payg">
+            <span class="pkg-name">Pay as you go</span>
+            <span class="pkg-sub">1 session</span>
+          </button>
+          <button class="pkg" id="pkg-4w">
+            <span class="pkg-name">4-week</span>
+            <span class="pkg-badge">10% off</span>
+          </button>
+          <button class="pkg on" id="pkg-8w">
+            <span class="pkg-name">8-week</span>
+            <span class="pkg-badge">20% off</span>
+          </button>
+        </div>
+      </div>
+ 
+      <div class="est-result">
+        <div>
+          <div class="res-lbl">Estimated total</div>
+          <div class="res-total" id="res-total">$480</div>
+          <div class="res-original" id="res-original">$600 without discount</div>
+          <div class="res-detail" id="res-detail">8 private sessions · $75 / hr</div>
+        </div>
+        <div class="res-note">First diagnostic session always free</div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- CURRICULUM -->
 <section class="curriculum" id="curriculum">
   <div class="section-inner">
@@ -1052,9 +1099,9 @@
     <p class="section-sub">Every curriculum starts with a diagnostic. Weak areas identified in the diagnostic determine what areas are focused on.</p>
  
     <div class="curriculum-tabs">
+      <button class="tab-btn" onclick="switchTab(event, 'group')">8-Week Group</button>
       <button class="tab-btn active" onclick="switchTab(event, 'eight')">8-Week Private</button>
       <button class="tab-btn" onclick="switchTab(event, 'four')">4-Week Private</button>
-      <button class="tab-btn" onclick="switchTab(event, 'group')">8-Week Group</button>
     </div>
  
     <div class="tab-content active" id="tab-eight">
@@ -1119,54 +1166,6 @@
   </div>
 </section>
  
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="section-inner">
-    <div class="section-label">Pricing</div>
-    <h2 class="section-title">Estimate your cost</h2>
-    <p class="section-sub">No hidden fees. First diagnostic session is always free.</p>
- 
-    <div class="estimator">
-      <div class="est-step">
-        <div class="est-step-label">Session type</div>
-        <div class="toggle-row">
-          <button class="tog on" id="btn-private">Private (1-on-1)</button>
-          <button class="tog" id="btn-group">Group</button>
-          <button class="tog" id="btn-combo">Private + Group</button>
-        </div>
-      </div>
- 
-      <div class="est-step">
-        <div class="est-step-label">Package</div>
-        <div class="pkg-row">
-          <button class="pkg" id="pkg-payg">
-            <span class="pkg-name">Pay as you go</span>
-            <span class="pkg-sub">1 session</span>
-          </button>
-          <button class="pkg" id="pkg-4w">
-            <span class="pkg-name">4-week</span>
-            <span class="pkg-badge">10% off</span>
-          </button>
-          <button class="pkg on" id="pkg-8w">
-            <span class="pkg-name">8-week</span>
-            <span class="pkg-badge">20% off</span>
-          </button>
-        </div>
-      </div>
- 
-      <div class="est-result">
-        <div>
-          <div class="res-lbl">Estimated total</div>
-          <div class="res-total" id="res-total">$480</div>
-          <div class="res-original" id="res-original">$600 without discount</div>
-          <div class="res-detail" id="res-detail">8 private sessions · $75 / hr</div>
-        </div>
-        <div class="res-note">First diagnostic session always free</div>
-      </div>
-    </div>
-  </div>
-</section>
- 
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
@@ -1216,7 +1215,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">A&S <span>SAT</span></div>
-  <div class="footer-text">Phoenix, AZ · Summer 2026 · assatprep@gmail.com</div>
+  <div class="footer-text">Phoenix, AZ · Summer 2026 · 480-862-2553 ·  assatprep@gmail.com</div>
 </footer>
  
 <script>
