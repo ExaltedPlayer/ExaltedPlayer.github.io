@@ -1261,13 +1261,14 @@ function estUpdate() {
   if (estType === 'combo') {
     const priv = estSessions.private[estPkgKey];
     const grp  = estSessions.group[estPkgKey];
-    full = (priv * 75) + (grp * 40);
+    full = (priv * 75) + (grp * 60);
     detail = priv + ' private + ' + grp + ' group sessions';
   } else {
     const sessions = estSessions[estType][estPkgKey];
-    const rate = estType === 'private' ? 75 : 40;
+    const rate = estType === 'private' ? 75 : 60;
+    const rateLabel = estType === 'private' ? '$75 / hr · 60 min' : '$40 / hr · 90 min';
     full = sessions * rate;
-    detail = sessions + (sessions === 1 ? ' session' : ' sessions') + ' · $' + rate + ' / hr';
+    detail = sessions + (sessions === 1 ? ' session' : ' sessions') + ' · ' + rateLabel;
   }
   const total = full * (1 - disc);
   document.getElementById('res-total').textContent = estFmt(total);
